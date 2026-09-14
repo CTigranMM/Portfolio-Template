@@ -3,6 +3,8 @@ import checkoutVideo from './assets/CheckoutDEMOAgence.mp4';
 import restVideo from './assets/RESTDEMOAgence.mp4';
 import agenceGif from './assets/agence_abc.gif';
 import duckHuntGif from './assets/duck_hunt.gif';
+import meteoModuleImg from './assets/meteomodule.png';
+import meteoWiringImg from './assets/MeteoWiring.jpg';
 
 // Dedicated VideoPlayer component ensuring smooth HTML5 playback
 function VideoPlayer({ src, title }) {
@@ -147,16 +149,20 @@ export default function App() {
     {
       id: 'station-meteo',
       title: 'Station Météorologique Automatisée',
-      subtitle: 'Système Embarqué IoT & Architecture MVC',
+      subtitle: 'Interface Tkinter Python, Système Multi-Thread Embarqué IoT & Architecture MVC',
       date: 'Mai 2026',
-      tech: ['Python', 'SQLite', 'Raspberry Pi 5', 'SSH', 'ADC/I2C'],
-      image: '/assets/station_meteo.jpg',
+      tech: ['Python', 'Tkinter UI', 'Multi-Threading', 'SQLite', 'Raspberry Pi 5', 'SSH', 'ADC/I2C'],
+      image: meteoModuleImg,
+      fallbackImage: '/assets/meteomodule.png',
+      wiringImage: meteoWiringImg,
       scoreBadge: 'Projet IoT / Systèmes Embarqués',
-      desc: 'Architecture logicielle MVC multi-threadée pour la lecture de données météo en temps réel sur Raspberry Pi 5 avec persistance SQLite.',
+      desc: 'Interface graphique Tkinter avec architecture MVC multi-threadée en Python pour le contrôle et la lecture en temps réel des composants électriques sur Raspberry Pi 5.',
       highlights: [
-        "Conception de l'architecture logicielle selon le patron MVC (Modèle-Vue-Contrôleur) avec utilisation de threads pour la lecture en temps réel.",
-        "Intégration logicielle de modules matériels: capteur de lumière (convertisseur ADC), température/humidité et écran LCD.",
-        "Persistance des données avec SQLite et administration à distance sécurisée de l'environnement via SSH."
+        "Interface Graphique Tkinter Python & Threads : Contrôle réactif des composants électriques et exécution multi-threadée pour la lecture simultanée des capteurs.",
+        "Contrôle des Composants Électriques : Gestion matérielle et acquisition temps réel (convertisseur ADC I2C pour luminosité, sonde température/humidité, écran LCD).",
+        "Conception MVC & Persistance SQLite : Modélisation Modèle-Vue-Contrôleur avec journalisation locale de l'historique météo en base SQLite.",
+        "Montage & Câblage Électronique : Assemblage et câblage rigoureux des circuits électriques sur platine d'expérimentation (Breadboard) reliée au Raspberry Pi 5.",
+        "Remarque sur le code source: Le dépôt et le code source de ce projet ne sont plus accessibles en raison de la fermeture/expiration de l'organisation GitHub Classroom du cours."
       ]
     },
     {
@@ -250,6 +256,20 @@ export default function App() {
           ))}
         </div>
 
+        {/* GitHub Classroom Lost Code Notice */}
+        {activeProject.id === 'station-meteo' && (
+          <div className="showcase-disclaimer" style={{ marginTop: '1.25rem', marginBottom: '1.5rem' }}>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+              <circle cx="12" cy="12" r="10" />
+              <line x1="12" x2="12" y1="8" y2="12" />
+              <line x1="12" x2="12.01" y1="16" y2="16" />
+            </svg>
+            <span>
+              <strong>Note sur le code source :</strong> Le code source de ce projet n'est plus accessible suite à l'expiration et à la fermeture de l'organisation GitHub Classroom du cours.
+            </span>
+          </div>
+        )}
+
         {/* Sprint Scores Section (Luxurious Minimalist Style) */}
         {activeProject.sprints && (
           <section className="showcase-section">
@@ -301,6 +321,27 @@ export default function App() {
                   <VideoPlayer src={video.src} title={video.title} />
                 </div>
               ))}
+            </div>
+          </section>
+        )}
+
+        {/* Wiring Diagram Section */}
+        {activeProject.wiringImage && (
+          <section className="showcase-section">
+            <h2 className="showcase-section-title">Schéma de Câblage Électronique & Hardware</h2>
+            <div className="showcase-wiring-layout">
+              <div className="showcase-wiring-img-wrapper">
+                <img
+                  src={activeProject.wiringImage}
+                  alt="Schéma de câblage de la station météo"
+                  className="showcase-wiring-img"
+                />
+              </div>
+              <div className="showcase-wiring-text">
+                <p>
+                  Schéma complet du câblage et du raccordement des composants électriques (convertisseur ADC I2C, photo-résistance, capteurs température/humidité et écran LCD) reliés aux broches GPIO du Raspberry Pi 5. Le système s'appuie sur une interface graphique <strong>Tkinter Python UI</strong> et des <strong>threads Python</strong> pour contrôler et surveiller en temps réel chaque composant électrique sans bloquer l'interface.
+                </p>
+              </div>
             </div>
           </section>
         )}
@@ -410,6 +451,60 @@ export default function App() {
                   </h3>
                   <p className="feature-detail-desc">
                     Support multi-langues complet, contrôles personnalisés et mise en page réactive dynamique.
+                  </p>
+                </div>
+              </>
+            )}
+
+            {activeProject.id === 'station-meteo' && (
+              <>
+                <div className="feature-detail-card">
+                  <h3 className="feature-detail-title">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                      <rect width="18" height="14" x="3" y="3" rx="2" />
+                      <path d="M7 21h10M12 17v4" />
+                    </svg>
+                    Interface Tkinter & Threads Python
+                  </h3>
+                  <p className="feature-detail-desc">
+                    Interface graphique Tkinter fluide utilisant des threads Python indépendants pour l'actualisation en continu des métriques sans blocage d'IHM.
+                  </p>
+                </div>
+                <div className="feature-detail-card">
+                  <h3 className="feature-detail-title">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                      <circle cx="12" cy="12" r="10" />
+                      <path d="M12 6v6l4 2" />
+                    </svg>
+                    Contrôle des Composants Électriques
+                  </h3>
+                  <p className="feature-detail-desc">
+                    Pilotage matériel direct : convertisseur ADC I2C (luminosité), capteurs de température/humidité et affichage sur écran LCD.
+                  </p>
+                </div>
+                <div className="feature-detail-card">
+                  <h3 className="feature-detail-title">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                      <ellipse cx="12" cy="5" rx="9" ry="3" />
+                      <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3" />
+                      <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5" />
+                    </svg>
+                    Base SQLite Persistante
+                  </h3>
+                  <p className="feature-detail-desc">
+                    Persistance locale et journalisation structurée des métriques météo pour le suivi temporel.
+                  </p>
+                </div>
+                <div className="feature-detail-card">
+                  <h3 className="feature-detail-title">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                      <rect width="14" height="20" x="5" y="2" rx="2" />
+                      <line x1="12" x2="12.01" y1="18" y2="18" />
+                    </svg>
+                    Raspberry Pi 5 & SSH
+                  </h3>
+                  <p className="feature-detail-desc">
+                    Hébergement autonome du système embarqué et gestion d'administration distante sécurisée via SSH.
                   </p>
                 </div>
               </>

@@ -414,6 +414,40 @@ button {
   object-fit: cover;
 }
 
+.showcase-wiring-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+.showcase-wiring-img-wrapper {
+  width: 100%;
+  max-width: 480px;
+  border-radius: 0.25rem;
+  border: 1px solid var(--border);
+  overflow: hidden;
+  background-color: var(--bg-card);
+}
+
+.showcase-wiring-img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.showcase-wiring-text {
+  font-size: 0.875rem;
+  color: var(--muted);
+  line-height: 1.65;
+}
+
+@media (max-width: 768px) {
+  .showcase-wiring-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
 .showcase-tech-list {
   display: flex;
   flex-wrap: wrap;
