@@ -4,7 +4,7 @@ A modern, customizable portfolio website built with **React** and **Vite**. This
 
 ## Features
 
-- **React 19 & Vite** f
+- **React 19 & Vite**
 - **Fully Customizable**: Simple component structure to quickly swap out text, images, and project details.
 - **Responsive Layout**: Designed to look great on desktop, tablet, and mobile devices.
 - **Open-Source Template**: Free to clone, fork, and adapt for your own personal portfolio.
