@@ -22,3 +22,20 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Resume & Personal CV files
+Final.tex
+*.tex
+*CV*
+*cv*
+*Resume*
+*resume*
+*.pdf
+
+# Large Media Files (>100MB GitHub limit)
+*.gif
+*.mp4
+public/assets/*.gif
+public/assets/*.mp4
+src/assets/*.gif
+src/assets/*.mp4
