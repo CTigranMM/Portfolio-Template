@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
 import checkoutVideo from './assets/CheckoutDEMOAgence.mp4';
 import restVideo from './assets/RESTDEMOAgence.mp4';
+import agenceGif from './assets/agence_abc.gif';
+import duckHuntGif from './assets/duck_hunt.gif';
 
 // Dedicated VideoPlayer component ensuring smooth HTML5 playback
 function VideoPlayer({ src, title }) {
@@ -84,7 +86,8 @@ export default function App() {
       subtitle: 'Application Web Full-Stack & Interface Java POO avec Déploiement Azure Cloud',
       date: 'Avril 2026',
       tech: ['React', 'Express.js', 'Java POO', 'JWT Auth', 'PayPal API', 'MongoDB', 'Azure App Service'],
-      image: '/assets/agence_abc.jpg',
+      image: agenceGif,
+      fallbackImage: '/assets/agence_abc.jpg',
       scoreBadge: '90% Note Finale (1re de la classe)',
       desc: "Projet récompensé par la meilleure note de la classe (90%). Intègre un paiement PayPal API, un client desktop Java POO avec authentification JWT, et une API REST Express déployée sur Azure.",
       isDetailed: true,
@@ -128,7 +131,8 @@ export default function App() {
       subtitle: 'Architecture Client/Serveur, Patron MVC & Animations 2D JavaFX',
       date: '2026',
       tech: ['Java', 'JavaFX', 'FXML', 'Gradle', 'GitLab', 'CSS', 'JSON/XML'],
-      image: '/assets/duck_hunt.jpg',
+      image: duckHuntGif,
+      fallbackImage: '/assets/duck_hunt.jpg',
       scoreBadge: 'Projet Client/Serveur JavaFX',
       desc: 'Jeu arcade 2D basé sur le patron MVC, avec architecture client-serveur (JSON/XML), animations 2D JavaFX et internationalisation (i18n).',
       highlights: [
@@ -228,7 +232,16 @@ export default function App() {
         </header>
 
         <div className="showcase-hero-img-wrapper">
-          <img src={activeProject.image} alt={activeProject.title} className="showcase-hero-img" />
+          <img
+            src={activeProject.image}
+            alt={activeProject.title}
+            className="showcase-hero-img"
+            onError={(e) => {
+              if (activeProject.fallbackImage) {
+                e.target.src = activeProject.fallbackImage;
+              }
+            }}
+          />
         </div>
 
         <div className="showcase-tech-list">
@@ -237,7 +250,7 @@ export default function App() {
           ))}
         </div>
 
-        {/* Sprint Scores Section (for Agence ABC) */}
+        {/* Sprint Scores Section (Luxurious Minimalist Style) */}
         {activeProject.sprints && (
           <section className="showcase-section">
             <h2 className="showcase-section-title">Évaluation des Sprints & Résultats</h2>
@@ -510,7 +523,16 @@ export default function App() {
           {projects.map(project => (
             <div key={project.id} className="project-card" onClick={() => setActiveProject(project)}>
               <div className="project-img-wrapper">
-                <img src={project.image} alt={project.title} className="project-img" />
+                <img
+                  src={project.image}
+                  alt={project.title}
+                  className="project-img"
+                  onError={(e) => {
+                    if (project.fallbackImage) {
+                      e.target.src = project.fallbackImage;
+                    }
+                  }}
+                />
               </div>
               <div className="project-header">
                 <h3 className="project-title">{project.title}</h3>

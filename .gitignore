@@ -32,10 +32,9 @@ Final.tex
 *resume*
 *.pdf
 
-# Large Media Files (>100MB GitHub limit)
-*.gif
-*.mp4
-public/assets/*.gif
-public/assets/*.mp4
-src/assets/*.gif
-src/assets/*.mp4
+# Raw Large Media Files (>100MB GitHub limit)
+src/assets/AgenceDEMO_preview.gif
+src/assets/Java project Demo.gif
+src/assets/JavaAppDemoAgence.mp4
+palette_*.png
+
