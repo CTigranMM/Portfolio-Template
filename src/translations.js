@@ -46,7 +46,7 @@ export const translations = {
       email: "Courriel",
       phone: "Téléphone",
       rightsReserved: "Tous droits réservés.",
-      hostedOnAws: "Hébergé sur AWS.",
+      hostedOnAws: "Hébergé sur AWS (CI/CD).",
       sourceCode: "Code source du site"
     },
     techStack: [
@@ -296,7 +296,7 @@ export const translations = {
       email: "Email",
       phone: "Phone",
       rightsReserved: "All rights reserved.",
-      hostedOnAws: "Hosted on AWS.",
+      hostedOnAws: "Hosted on AWS (CI/CD).",
       sourceCode: "Website source code"
     },
     techStack: [
