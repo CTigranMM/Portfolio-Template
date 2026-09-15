@@ -271,6 +271,7 @@ export default function Home() {
           <a href="#projects">Projets</a>
           <a href="https://www.linkedin.com/in/tigran-micheal-matinyan/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
           <a href="https://github.com/CTigranMM" target="_blank" rel="noopener noreferrer">GitHub</a>
+          <a href="https://github.com/CTigranMM/Portfolio-Template" target="_blank" rel="noopener noreferrer">{t.sourceCode}</a>
           <a href="mailto:tigrannmatinyan@icloud.com">{t.email}</a>
           <a href="tel:14383731919">+1 (438) 373-1919</a>
         </nav>
