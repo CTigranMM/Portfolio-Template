@@ -5,6 +5,10 @@ import agenceGif from './assets/agence_abc.gif';
 import duckHuntGif from './assets/duck_hunt.gif';
 import meteoModuleImg from './assets/meteomodule.png';
 import meteoWiringImg from './assets/MeteoWiring.jpg';
+import collabMaquetteImg from './assets/MaquetteCollaboration.png';
+import benevoleImg from './assets/Benevole.jpeg';
+import carplayImg from './assets/appleCarplay.jpeg';
+import carVideo from './assets/car.mp4';
 
 // Dedicated VideoPlayer component ensuring smooth HTML5 playback
 function VideoPlayer({ src, title }) {
@@ -51,6 +55,7 @@ export default function App() {
   });
 
   const [activeProject, setActiveProject] = useState(null);
+  const [activeExperience, setActiveExperience] = useState(null);
 
   useEffect(() => {
     const root = document.documentElement;
@@ -167,40 +172,90 @@ export default function App() {
     },
     {
       id: 'app-collab',
-      title: 'Application Web Collaborative',
-      subtitle: 'Développement Agile & Workflow Git Avancé',
+      title: 'Application Web Collaborative (Stack MERN)',
+      subtitle: 'Initiation au Stack MERN, API RESTful, Authentification JWT & Hébergement Vercel',
       date: 'Février 2026',
-      tech: ['Git', 'GitHub', 'JavaScript', 'HTML5', 'CSS3'],
-      image: '/assets/web_collab.jpg',
-      scoreBadge: 'Projet Collaboratif',
-      desc: "Co-développement d'une application web avec workflow Git rigoureux, gestion de branches, pull requests et résolution de conflits.",
+      tech: ['React.js', 'Express.js', 'MongoDB', 'Node.js', 'JWT Auth', 'REST API', 'Vercel', 'Git'],
+      image: collabMaquetteImg,
+      fallbackImage: '/assets/MaquetteCollaboration.png',
+      scoreBadge: 'Projet Fondateur MERN',
+      desc: "Projet pionnier d'initiation à l'architecture MERN (MongoDB, Express, React, Node) ayant servi de tremplin technique indispensable pour la réalisation ultérieure du projet Agence ABC.",
       highlights: [
-        "Co-développement d'une application web exigeant une excellente communication technique et une synchronisation constante.",
-        "Utilisation rigoureuse de Git et GitHub pour le contrôle de version: gestion des branches, pull requests et résolution de conflits."
+        "Tremplin MERN & Fondation d'Agence ABC : Premier projet d'équipe ayant permis à la classe d'assimiler l'architecture MERN (MongoDB, Express, React, Node), posant les bases de compétences réutilisées sur l'Agence Touristique ABC.",
+        "Architecture Full-Stack MERN : Structuration entre l'interface utilisateur React.js, l'API REST Express.js / Node.js et la base de données NoSQL MongoDB.",
+        "Sécurité & Échanges REST : Développement d'endpoints RESTful et contrôle d'accès sécurisé par jetons d'authentification JWT (JSON Web Tokens).",
+        "Déploiement Cloud Vercel : Hébergement continu sur la plateforme Vercel (solution accessible et beginner-friendly pour les projets MERN), comparativement à Microsoft Azure utilisé ultérieurement pour Agence ABC.",
+        "Workflow Collaboratif Git : Travail d'équipe axé sur la gestion des branches Git, revues de code, pull requests et résolution de conflits.",
+        "Remarque sur le code source: Tout comme la station météo, le dépôt et le code source de ce projet ne sont plus accessibles suite à l'expiration/fermeture de l'organisation GitHub Classroom du cours."
       ]
     }
   ];
 
   const experiences = [
     {
+      id: 'auto-accessories',
       role: "Installateur indépendant d'accessoires automobiles",
       company: "Projet indépendant / Travailleur autonome • Laval, Qc",
       dates: "2025 -- Présent",
+      badge: "Électronique Automobile 12V & Multimédia",
       bullets: [
-        "Installation, raccordement électrique et intégration d'équipements électroniques (écrans multimédias, barres d'éclairage, feux F1) sur véhicules.",
+        "Installation, raccordement électrique et intégration d'équipements électroniques (écrans multimédias Apple CarPlay, feux F1, éclairage DRL) sur véhicules.",
         "Diagnostic et test de circuits basse tension 12V à l'aide d'un multimètre pour un câblage propre et sécurisé.",
         "Gestion de la relation client : analyse des besoins, estimation des coûts et respect rigoureux des délais."
-      ]
+      ],
+      details: {
+        summary: "Travaux indépendants spécialisés dans le diagnostic, l'intégration et le raccordement électrique d'accessoires automobiles basse tension (12V) avec une finition propre de niveau d'origine.",
+        highlights: [
+          "Subaru Impreza 2016 : Installation, intégration de console et raccordement électrique complet d'une unité multimédia Apple CarPlay.",
+          "Feux de freinage Style F1 : Montage et raccordement électrique de feux de freinage / anti-brouillard dynamiques style F1 (voir démonstration vidéo ci-dessous).",
+          "Honda Accord 2018 : Installation d'un emblème lumineux dynamique Honda et intégration de feux de jour DRL / clignotants dynamiques sur rétroviseurs.",
+          "Raccordement & Sécurité 12V : Tests au multimètre, diagnostic de circuits basse tension 12V et intégration soignée des faisceaux électriques."
+        ],
+        media: [
+          {
+            type: 'video',
+            title: 'Feux de Freinage / Anti-Brouillard Style F1',
+            desc: 'Démonstration du fonctionnement et du clignotement dynamique des feux style F1 installés.',
+            src: carVideo
+          },
+          {
+            type: 'image',
+            title: 'Intégration Apple CarPlay — Subaru Impreza 2016',
+            desc: 'Aperçu de l’intégration de l’unité multimédia Apple CarPlay et du câblage dans une Subaru Impreza 2016.',
+            src: carplayImg
+          }
+        ]
+      }
     },
     {
+      id: 'benevole-obn',
       role: "Bénévole au Tournoi OBN (Tennis Canada)",
       company: "Expérience des fans • Montréal, Qc",
       dates: "Été 2026",
+      badge: "Nommé Bénévole le Plus Enthusiast",
       bullets: [
+        "Nommé le bénévole le plus enthousiaste du tournoi et qualifié de véritable source d'inspiration pour l'équipe par les capitaines.",
         "Animation des kiosques de jeux interactifs et distribution d'articles promotionnels auprès d'un grand volume de visiteurs.",
-        "Assistance opérationnelle sur le site pour assurer la fluidité des activités et répondre rapidement aux imprévus.",
-        "Accueil et interaction directe avec le public pour garantir une expérience dynamique et positive."
-      ]
+        "Accueil, orientation des fans et assistance opérationnelle sur le site pour assurer la fluidité des activités."
+      ],
+      details: {
+        summary: "Engagement bénévole au prestigieux Omnium Banque Nationale (OBN) de Tennis Canada à Montréal, récompensé par la distinction du bénévole le plus enthousiaste et salué par la direction d'équipe.",
+        quote: "J'ai eu l'honneur de servir comme bénévole au tournoi de Tennis Canada à Montréal (Omnium Banque Nationale). J'y ai été nommé le bénévole le plus enthousiaste et mes capitaines m'ont qualifié de véritable source d'inspiration pour les autres bénévoles.",
+        highlights: [
+          "Honneur au Tournoi OBN : Fierté et honneur d'avoir fait partie de l'équipe officielle de bénévoles lors du tournoi international de Tennis Canada à Montréal.",
+          "Bénévole le Plus Enthousiaste : Récipiendaire de la mention d'honneur décernée au bénévole le plus enthousiaste du tournoi.",
+          "Reconnaissance des Capitaines : Salué par les capitaines d'équipe comme une source d'inspiration constante pour l'ensemble des bénévoles du site.",
+          "Animation & Service aux Fans : Accueil chaleureux des spectateurs, animation dynamique des jeux et gestion des flux sur le site du tournoi."
+        ],
+        media: [
+          {
+            type: 'image',
+            title: 'Bénévole Officiel — Omnium Banque Nationale (Tennis Canada)',
+            desc: 'Présence et implication sur le site du tournoi international de Tennis Canada à Montréal.',
+            src: benevoleImg
+          }
+        ]
+      }
     }
   ];
 
@@ -257,7 +312,7 @@ export default function App() {
         </div>
 
         {/* GitHub Classroom Lost Code Notice */}
-        {activeProject.id === 'station-meteo' && (
+        {(activeProject.id === 'station-meteo' || activeProject.id === 'app-collab') && (
           <div className="showcase-disclaimer" style={{ marginTop: '1.25rem', marginBottom: '1.5rem' }}>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
               <circle cx="12" cy="12" r="10" />
@@ -265,7 +320,7 @@ export default function App() {
               <line x1="12" x2="12.01" y1="16" y2="16" />
             </svg>
             <span>
-              <strong>Note sur le code source :</strong> Le code source de ce projet n'est plus accessible suite à l'expiration et à la fermeture de l'organisation GitHub Classroom du cours.
+              <strong>Note sur le code source :</strong> Le code source original de ce projet n'est plus accessible suite à l'expiration et à la fermeture de l'organisation GitHub Classroom du cours.
             </span>
           </div>
         )}
@@ -509,6 +564,60 @@ export default function App() {
                 </div>
               </>
             )}
+
+            {activeProject.id === 'app-collab' && (
+              <>
+                <div className="feature-detail-card">
+                  <h3 className="feature-detail-title">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                      <polygon points="12 2 2 7 12 12 22 7 12 2" />
+                      <polyline points="2 17 12 22 22 17" />
+                      <polyline points="2 12 12 17 22 12" />
+                    </svg>
+                    Tremplin MERN & Origine d'Agence ABC
+                  </h3>
+                  <p className="feature-detail-desc">
+                    Projet fondateur d'apprentissage du stack MERN (MongoDB, Express, React, Node) ayant préparé les compétences pour Agence ABC.
+                  </p>
+                </div>
+                <div className="feature-detail-card">
+                  <h3 className="feature-detail-title">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                      <rect width="18" height="11" x="3" y="11" rx="2" />
+                      <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+                    </svg>
+                    API REST & Auth JWT
+                  </h3>
+                  <p className="feature-detail-desc">
+                    Modélisation RESTful d'endpoints sécurisés par jetons d'authentification JWT et synchronisation de données MongoDB.
+                  </p>
+                </div>
+                <div className="feature-detail-card">
+                  <h3 className="feature-detail-title">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                      <path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z" />
+                    </svg>
+                    Déploiement Cloud Vercel
+                  </h3>
+                  <p className="feature-detail-desc">
+                    Déploiement continu et hébergement web sur Vercel (plateforme beginner-friendly), comparativement à Azure sur Agence ABC.
+                  </p>
+                </div>
+                <div className="feature-detail-card">
+                  <h3 className="feature-detail-title">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                      <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+                      <circle cx="9" cy="7" r="4" />
+                      <path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" />
+                    </svg>
+                    Workflow Git Collaboratif
+                  </h3>
+                  <p className="feature-detail-desc">
+                    Développement d'équipe structuré sous Git / GitHub avec gestion de branches, revues de code et résolution de conflits.
+                  </p>
+                </div>
+              </>
+            )}
           </div>
 
           <h3 style={{ fontSize: '0.875rem', fontWeight: 500, color: 'var(--fg)', marginBottom: '0.5rem' }}>Détails d'implémentation :</h3>
@@ -521,6 +630,95 @@ export default function App() {
 
         <footer className="footer">
           <button className="btn-back" onClick={() => setActiveProject(null)}>
+            ← Retour au portfolio
+          </button>
+          <p>&copy; {new Date().getFullYear()} Tigran Matinyan. Tous droits réservés.</p>
+        </footer>
+      </main>
+    );
+  }
+
+  // If experience is clicked, render Experience Showcase View Page
+  if (activeExperience) {
+    return (
+      <main className="portfolio-container showcase-view">
+        <button className="btn-back" onClick={() => setActiveExperience(null)}>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+            <path d="M19 12H5M12 19l-7-7 7-7" />
+          </svg>
+          Retour aux expériences
+        </button>
+
+        <header className="showcase-header">
+          <h1 className="showcase-title">{activeExperience.role}</h1>
+          <p className="profile-role">{activeExperience.company}</p>
+          <p className="showcase-date">{activeExperience.dates} {activeExperience.badge && `• ${activeExperience.badge}`}</p>
+        </header>
+
+        {activeExperience.details?.quote && (
+          <div className="showcase-quote-box">
+            <svg className="showcase-quote-icon" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/>
+            </svg>
+            <p className="showcase-quote-text">{activeExperience.details.quote}</p>
+          </div>
+        )}
+
+        {activeExperience.details?.summary && (
+          <section className="showcase-section">
+            <p style={{ fontSize: '0.9375rem', color: 'var(--muted)', lineHeight: '1.7' }}>
+              {activeExperience.details.summary}
+            </p>
+          </section>
+        )}
+
+        {/* Media Showcase Grid */}
+        {activeExperience.details?.media && (
+          <section className="showcase-section">
+            <h2 className="showcase-section-title">Galerie & Démonstrations</h2>
+            <div className="video-showcase-grid">
+              {activeExperience.details.media.map((item, index) => (
+                <div key={index} className="video-item-block">
+                  <div className="video-item-header">
+                    <h3 className="video-item-title">{item.title}</h3>
+                    <p className="video-item-desc">{item.desc}</p>
+                  </div>
+                  {item.type === 'video' ? (
+                    <VideoPlayer src={item.src} title={item.title} />
+                  ) : (
+                    <div className="showcase-hero-img-wrapper" style={{ marginTop: '0.75rem' }}>
+                      <img
+                        src={item.src}
+                        alt={item.title}
+                        className="showcase-hero-img"
+                        style={{
+                          maxHeight: '420px',
+                          objectFit: 'contain',
+                          transform: item.flip ? 'scaleX(-1)' : 'none'
+                        }}
+                      />
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
+          </section>
+        )}
+
+        {/* Highlights Section */}
+        {activeExperience.details?.highlights && (
+          <section className="showcase-section">
+            <h2 className="showcase-section-title">Points Saillants & Réalisations</h2>
+            <ul className="showcase-highlights">
+              {activeExperience.details.highlights.map((point, index) => (
+                <li key={index}>{point}</li>
+              ))}
+            </ul>
+          </section>
+        )}
+
+        <footer className="footer">
+          <button className="btn-back" onClick={() => setActiveExperience(null)}>
             ← Retour au portfolio
           </button>
           <p>&copy; {new Date().getFullYear()} Tigran Matinyan. Tous droits réservés.</p>
@@ -562,41 +760,55 @@ export default function App() {
         </button>
       </div>
 
-      {/* Actions Row */}
+      {/* Actions & Contact Bar */}
       <div className="actions-row">
         <a
           href="mailto:tigrannmatinyan@icloud.com"
           className="btn-resume"
         >
-          Contact / Courriel
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+            <rect width="20" height="16" x="2" y="4" rx="2" />
+            <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+          </svg>
+          Me contacter
+        </a>
+
+        <a
+          href="tel:14383731919"
+          className="contact-pill"
+          title="Appeler Tigran Matinyan"
+        >
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+          </svg>
+          <span>+1 (438) 373-1919</span>
+        </a>
+
+        <a
+          href="https://www.linkedin.com/in/tigran-micheal-matinyan/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="social-icon-btn"
+          aria-label="LinkedIn"
+          title="LinkedIn"
+        >
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/>
+          </svg>
         </a>
 
         <a
           href="https://github.com/CTigranMM"
           target="_blank"
           rel="noopener noreferrer"
-          className="social-link"
+          className="social-icon-btn"
           aria-label="GitHub"
+          title="GitHub"
         >
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
             <path fillRule="evenodd" clipRule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" />
           </svg>
         </a>
-
-        <a
-          href="mailto:tigrannmatinyan@icloud.com"
-          className="social-link"
-          aria-label="Email"
-        >
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-            <rect width="20" height="16" x="2" y="4" rx="2" />
-            <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
-          </svg>
-        </a>
-
-        <span style={{ fontSize: '0.875rem', color: 'var(--muted)', marginLeft: 'auto' }}>
-          438 373-1919
-        </span>
       </div>
 
       {/* Tech Stack Section */}
@@ -657,12 +869,24 @@ export default function App() {
                     <li key={i}>{b}</li>
                   ))}
                 </ul>
+                {exp.details && (
+                  <button
+                    className="btn-learn-more"
+                    onClick={() => setActiveExperience(exp)}
+                  >
+                    En savoir plus
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                      <path d="M5 12h14M12 5l7 7-7 7" />
+                    </svg>
+                  </button>
+                )}
               </div>
               <span className="timeline-date">{exp.dates}</span>
             </div>
           ))}
         </div>
       </section>
+
 
       {/* Education Section */}
       <section className="section">
@@ -681,12 +905,69 @@ export default function App() {
         </div>
       </section>
 
+      {/* Contact Section */}
+      <section className="section" id="contact">
+        <h2 className="section-title">Coordonnées & Réseaux</h2>
+        <div className="contact-cards-grid">
+          <a href="mailto:tigrannmatinyan@icloud.com" className="contact-card">
+            <div className="contact-card-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <rect width="20" height="16" x="2" y="4" rx="2" />
+                <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+              </svg>
+            </div>
+            <div>
+              <span className="contact-card-label">Courriel</span>
+              <span className="contact-card-value">tigrannmatinyan@icloud.com</span>
+            </div>
+          </a>
+
+          <a href="tel:14383731919" className="contact-card">
+            <div className="contact-card-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+              </svg>
+            </div>
+            <div>
+              <span className="contact-card-label">Téléphone</span>
+              <span className="contact-card-value">+1 (438) 373-1919</span>
+            </div>
+          </a>
+
+          <a href="https://www.linkedin.com/in/tigran-micheal-matinyan/" target="_blank" rel="noopener noreferrer" className="contact-card">
+            <div className="contact-card-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/>
+              </svg>
+            </div>
+            <div>
+              <span className="contact-card-label">LinkedIn</span>
+              <span className="contact-card-value">Tigran Micheal Matinyan</span>
+            </div>
+          </a>
+
+          <a href="https://github.com/CTigranMM" target="_blank" rel="noopener noreferrer" className="contact-card">
+            <div className="contact-card-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                <path fillRule="evenodd" clipRule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" />
+              </svg>
+            </div>
+            <div>
+              <span className="contact-card-label">GitHub</span>
+              <span className="contact-card-value">CTigranMM</span>
+            </div>
+          </a>
+        </div>
+      </section>
+
       {/* Footer */}
       <footer className="footer">
         <nav className="footer-nav">
           <a href="#projects">Projets</a>
+          <a href="https://www.linkedin.com/in/tigran-micheal-matinyan/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
           <a href="https://github.com/CTigranMM" target="_blank" rel="noopener noreferrer">GitHub</a>
           <a href="mailto:tigrannmatinyan@icloud.com">Courriel</a>
+          <a href="tel:14383731919">+1 (438) 373-1919</a>
         </nav>
         <p>&copy; {new Date().getFullYear()} Tigran Matinyan. Tous droits réservés.</p>
       </footer>
