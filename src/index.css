@@ -30,6 +30,23 @@
   padding: 0;
 }
 
+@keyframes skeleton-loading {
+  0% {
+    background-color: var(--bg-card);
+  }
+  50% {
+    background-color: var(--border);
+  }
+  100% {
+    background-color: var(--bg-card);
+  }
+}
+
+.skeleton-loader {
+  animation: skeleton-loading 2s infinite ease-in-out;
+  background-color: var(--bg-card);
+}
+
 html, body {
   background-color: var(--bg);
   color: var(--fg);
