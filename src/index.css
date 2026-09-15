@@ -150,6 +150,7 @@ button {
 .actions-row {
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
   gap: 1rem;
   margin-bottom: 2.5rem;
 }
