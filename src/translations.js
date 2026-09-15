@@ -8,6 +8,7 @@ import collabMaquetteImg from './assets/MaquetteCollaboration.png';
 import benevoleImg from './assets/Benevole.jpeg';
 import carplayImg from './assets/appleCarplay.jpeg';
 import carVideo from './assets/car.mp4';
+import cvPdf from './assets/CV-TigranMatinyan.pdf';
 
 export const translations = {
   fr: {
@@ -16,6 +17,8 @@ export const translations = {
       location: "Laval (Québec), Canada",
       bio: "Étudiant en informatique passionné par la technologie, spécialisé en développement logiciel et web full-stack. Toujours à la recherche de nouveaux défis et de solutions innovantes. Actuellement à la recherche d'un stage pour l'été 2027.",
       contactMe: "Me contacter",
+      downloadCv: "Télécharger mon CV",
+      cvFile: cvPdf,
       techSkills: "Compétences Techniques",
       projectsTitle: "Projets (Cliquer pour ouvrir la vitrine produit)",
       experienceTitle: "Expérience et implication",
@@ -42,7 +45,8 @@ export const translations = {
       highlightsSectionTitle: "Points Saillants & Réalisations",
       email: "Courriel",
       phone: "Téléphone",
-      rightsReserved: "Tous droits réservés."
+      rightsReserved: "Tous droits réservés.",
+      hostedOnAws: "Hébergé sur AWS."
     },
     techStack: [
       { name: 'JavaScript', techKey: 'javascript' },
@@ -262,6 +266,8 @@ export const translations = {
       location: "Laval (Quebec), Canada",
       bio: "Computer science student passionate about technology, specializing in software and full-stack web development. Always looking for new challenges and innovative solutions. Currently seeking an internship for Summer 2027.",
       contactMe: "Contact Me",
+      downloadCv: "Download my CV",
+      cvFile: cvPdf,
       techSkills: "Technical Skills",
       projectsTitle: "Projects (Click to open product showcase)",
       experienceTitle: "Experience & Involvement",
@@ -288,7 +294,8 @@ export const translations = {
       highlightsSectionTitle: "Highlights & Achievements",
       email: "Email",
       phone: "Phone",
-      rightsReserved: "All rights reserved."
+      rightsReserved: "All rights reserved.",
+      hostedOnAws: "Hosted on AWS."
     },
     techStack: [
       { name: 'JavaScript', techKey: 'javascript' },
