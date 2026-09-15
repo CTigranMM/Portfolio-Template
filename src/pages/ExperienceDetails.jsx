@@ -103,6 +103,9 @@ export default function ExperienceDetails() {
       )}
 
       <footer className="footer">
+        <nav className="footer-nav">
+          <a href="https://github.com/CTigranMM/Portfolio-Template" target="_blank" rel="noopener noreferrer">{t.sourceCode}</a>
+        </nav>
         <button className="btn-back" onClick={() => navigate('/')}>
           {t.backToPortfolio}
         </button>
