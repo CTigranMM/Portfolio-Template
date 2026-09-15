@@ -26,11 +26,6 @@ dist-ssr
 # Resume & Personal CV files
 Final.tex
 *.tex
-*CV*
-*cv*
-*Resume*
-*resume*
-*.pdf
 
 # Raw Large Media Files (>100MB GitHub limit)
 src/assets/AgenceDEMO_preview.gif
