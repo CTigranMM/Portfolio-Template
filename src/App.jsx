@@ -1,14 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import checkoutVideo from './assets/CheckoutDEMOAgence.mp4';
-import restVideo from './assets/RESTDEMOAgence.mp4';
-import agenceGif from './assets/agence_abc.gif';
-import duckHuntGif from './assets/duck_hunt.gif';
-import meteoModuleImg from './assets/meteomodule.png';
-import meteoWiringImg from './assets/MeteoWiring.jpg';
-import collabMaquetteImg from './assets/MaquetteCollaboration.png';
-import benevoleImg from './assets/Benevole.jpeg';
-import carplayImg from './assets/appleCarplay.jpeg';
-import carVideo from './assets/car.mp4';
+import { translations } from './translations';
 
 // Dedicated VideoPlayer component ensuring smooth HTML5 playback
 function VideoPlayer({ src, title }) {
@@ -44,6 +35,31 @@ function VideoPlayer({ src, title }) {
   );
 }
 
+// Component for images with skeleton loading state
+function ImgWithSkeleton({ src, alt, className, wrapperClassName, fallbackImage, style }) {
+  const [loaded, setLoaded] = useState(false);
+  const [error, setError] = useState(false);
+  
+  return (
+    <div className={`${wrapperClassName || ''} ${loaded || error ? '' : 'skeleton-loader'}`}>
+      <img
+        src={error && fallbackImage ? fallbackImage : src}
+        alt={alt}
+        className={className}
+        style={{ ...style, opacity: loaded || error ? 1 : 0, transition: 'opacity 0.3s ease' }}
+        onLoad={() => setLoaded(true)}
+        onError={() => {
+          if (!error && fallbackImage) {
+            setError(true);
+          } else {
+            setLoaded(true);
+          }
+        }}
+      />
+    </div>
+  );
+}
+
 export default function App() {
   const [theme, setTheme] = useState(() => {
     if (typeof window !== 'undefined') {
@@ -54,15 +70,11 @@ export default function App() {
     return 'dark';
   });
 
-  const [activeProject, setActiveProject] = useState(null);
-  const [activeExperience, setActiveExperience] = useState(null);
-
   useEffect(() => {
-    const root = document.documentElement;
     if (theme === 'dark') {
-      root.classList.add('dark');
+      document.documentElement.classList.add('dark');
     } else {
-      root.classList.remove('dark');
+      document.documentElement.classList.remove('dark');
     }
     localStorage.setItem('theme', theme);
   }, [theme]);
@@ -71,219 +83,81 @@ export default function App() {
     setTheme(prev => (prev === 'dark' ? 'light' : 'dark'));
   };
 
-  const techStack = [
-    { name: 'JavaScript', techKey: 'javascript' },
-    { name: 'TypeScript', techKey: 'typescript' },
-    { name: 'Python', techKey: 'python' },
-    { name: 'Java', techKey: 'java' },
-    { name: 'C#', techKey: 'csharp' },
-    { name: 'C++', techKey: 'cpp' },
-    { name: 'SQL', techKey: 'sql' },
-    { name: 'React', techKey: 'react' },
-    { name: 'Express.js', techKey: 'express' },
-    { name: 'Node.js', techKey: 'nodejs' },
-    { name: 'MongoDB', techKey: 'mongodb' },
-    { name: 'Azure', techKey: 'azure' }
-  ];
+  const [activeProject, setActiveProject] = useState(null);
+  const [activeExperience, setActiveExperience] = useState(null);
+  const savedScrollPos = useRef(0);
 
-  const projects = [
-    {
-      id: 'agence-abc',
-      title: 'Agence Touristique ABC',
-      subtitle: 'Application Web Full-Stack & Interface Java POO avec Déploiement Azure Cloud',
-      date: 'Avril 2026',
-      tech: ['React', 'Express.js', 'Java POO', 'JWT Auth', 'PayPal API', 'MongoDB', 'Azure App Service'],
-      image: agenceGif,
-      fallbackImage: '/assets/agence_abc.jpg',
-      scoreBadge: '90% Note Finale (1re de la classe)',
-      desc: "Projet récompensé par la meilleure note de la classe (90%). Intègre un paiement PayPal API, un client desktop Java POO avec authentification JWT, et une API REST Express déployée sur Azure.",
-      isDetailed: true,
-      sprints: [
-        {
-          name: 'Sprint 1 — Architecture & Diagrammes UML',
-          score: '12.70 / 14 (90.71%)',
-          desc: "Conception intégrale de l'architecture logicielle et modélisation complète des diagrammes UML (cas d'utilisation, classes, séquences)."
-        },
-        {
-          name: 'Sprint 2 — Implémentation & Tests',
-          score: '14.00 / 14 (100.00%)',
-          desc: 'Phase d’implémentation, couverture de tests et livraison sans faille de toutes les fonctionnalités requises.'
-        }
-      ],
-      highlights: [
-        "Dépassement d'objectifs : L'évaluation visait uniquement la conformité des diagrammes fonctionnels, mais notre équipe a conçu un système complet de qualité industrielle.",
-        "Module de paiement en ligne : Intégration directe de l'API PayPal pour le traitement sécurisé des transactions de réservations.",
-        "Client Desktop Java POO : Application Java orientée objet permettant aux administrateurs de se connecter via JWT et de gérer directement la base MongoDB.",
-        "Sécurité & API REST : Architecture RESTful Express.js avec contrôle d'accès unifié par jetons d'authentification JWT.",
-        "Infrastructure Cloud Azure : Déploiement automatisé et hébergement continu sur Azure App Service."
-      ],
-      videos: [
-        {
-          id: 'checkout-demo',
-          title: 'Module de Paiement — API PayPal',
-          desc: 'Démonstration du flux de commande et du paiement sécurisé en direct via l’API PayPal.',
-          src: checkoutVideo
-        },
-        {
-          id: 'rest-demo',
-          title: 'API REST & Synchronisation MongoDB',
-          desc: 'Validation des échanges de données RESTful, des jetons JWT et des transactions en base de données.',
-          src: restVideo
-        }
-      ]
-    },
-    {
-      id: 'duck-hunt',
-      title: 'Duck Hunt Arcade',
-      subtitle: 'Architecture Client/Serveur, Patron MVC & Animations 2D JavaFX',
-      date: '2026',
-      tech: ['Java', 'JavaFX', 'FXML', 'Gradle', 'GitLab', 'CSS', 'JSON/XML'],
-      image: duckHuntGif,
-      fallbackImage: '/assets/duck_hunt.jpg',
-      scoreBadge: 'Projet Client/Serveur JavaFX',
-      desc: 'Jeu arcade 2D basé sur le patron MVC, avec architecture client-serveur (JSON/XML), animations 2D JavaFX et internationalisation (i18n).',
-      highlights: [
-        "Architecture MVC & Multi-Modèles : Séparation stricte entre l'interface FXML, les modèles de données concurrents et la logique d'affaires.",
-        "Réseau Client/Serveur : Échanges de données structurés (JSON/XML) et protocoles de communication réseau entre les modules client et serveur.",
-        "Patron Observer & Événements : Gestion réactive des événements UI, observation d'état et synchronisation temps réel entre modèles et vues.",
-        "Graphiques 2D & Animations JavaFX : Rendu 2D dynamique sur Canvas, boucle de jeu (Game Loop) et interface declarative FXML stylisée en CSS.",
-        "Composants Personnalisés & Internationalisation : Contrôles réutilisables, mise en page élastique réactive et support multi-langues (i18n).",
-        "Tooling & Assurance Qualité : Gestion des versions et des branches sur GitLab avec Gradle, revue de code formelle et plan de tests de bogue."
-      ]
-    },
-    {
-      id: 'station-meteo',
-      title: 'Station Météorologique Automatisée',
-      subtitle: 'Interface Tkinter Python, Système Multi-Thread Embarqué IoT & Architecture MVC',
-      date: 'Mai 2026',
-      tech: ['Python', 'Tkinter UI', 'Multi-Threading', 'SQLite', 'Raspberry Pi 5', 'SSH', 'ADC/I2C'],
-      image: meteoModuleImg,
-      fallbackImage: '/assets/meteomodule.png',
-      wiringImage: meteoWiringImg,
-      scoreBadge: 'Projet IoT / Systèmes Embarqués',
-      desc: 'Interface graphique Tkinter avec architecture MVC multi-threadée en Python pour le contrôle et la lecture en temps réel des composants électriques sur Raspberry Pi 5.',
-      highlights: [
-        "Interface Graphique Tkinter Python & Threads : Contrôle réactif des composants électriques et exécution multi-threadée pour la lecture simultanée des capteurs.",
-        "Contrôle des Composants Électriques : Gestion matérielle et acquisition temps réel (convertisseur ADC I2C pour luminosité, sonde température/humidité, écran LCD).",
-        "Conception MVC & Persistance SQLite : Modélisation Modèle-Vue-Contrôleur avec journalisation locale de l'historique météo en base SQLite.",
-        "Montage & Câblage Électronique : Assemblage et câblage rigoureux des circuits électriques sur platine d'expérimentation (Breadboard) reliée au Raspberry Pi 5.",
-        "Remarque sur le code source: Le dépôt et le code source de ce projet ne sont plus accessibles en raison de la fermeture/expiration de l'organisation GitHub Classroom du cours."
-      ]
-    },
-    {
-      id: 'app-collab',
-      title: 'Application Web Collaborative (Stack MERN)',
-      subtitle: 'Initiation au Stack MERN, API RESTful, Authentification JWT & Hébergement Vercel',
-      date: 'Février 2026',
-      tech: ['React.js', 'Express.js', 'MongoDB', 'Node.js', 'JWT Auth', 'REST API', 'Vercel', 'Git'],
-      image: collabMaquetteImg,
-      fallbackImage: '/assets/MaquetteCollaboration.png',
-      scoreBadge: 'Projet Fondateur MERN',
-      desc: "Projet pionnier d'initiation à l'architecture MERN (MongoDB, Express, React, Node) ayant servi de tremplin technique indispensable pour la réalisation ultérieure du projet Agence ABC.",
-      highlights: [
-        "Tremplin MERN & Fondation d'Agence ABC : Premier projet d'équipe ayant permis à la classe d'assimiler l'architecture MERN (MongoDB, Express, React, Node), posant les bases de compétences réutilisées sur l'Agence Touristique ABC.",
-        "Architecture Full-Stack MERN : Structuration entre l'interface utilisateur React.js, l'API REST Express.js / Node.js et la base de données NoSQL MongoDB.",
-        "Sécurité & Échanges REST : Développement d'endpoints RESTful et contrôle d'accès sécurisé par jetons d'authentification JWT (JSON Web Tokens).",
-        "Déploiement Cloud Vercel : Hébergement continu sur la plateforme Vercel (solution accessible et beginner-friendly pour les projets MERN), comparativement à Microsoft Azure utilisé ultérieurement pour Agence ABC.",
-        "Workflow Collaboratif Git : Travail d'équipe axé sur la gestion des branches Git, revues de code, pull requests et résolution de conflits.",
-        "Remarque sur le code source: Tout comme la station météo, le dépôt et le code source de ce projet ne sont plus accessibles suite à l'expiration/fermeture de l'organisation GitHub Classroom du cours."
-      ]
+  const openProject = (project) => {
+    savedScrollPos.current = window.scrollY;
+    setActiveProject(project);
+  };
+
+  const openExperience = (exp) => {
+    savedScrollPos.current = window.scrollY;
+    setActiveExperience(exp);
+  };
+
+  const closeShowcase = () => {
+    setActiveProject(null);
+    setActiveExperience(null);
+  };
+
+  // Handle scroll position when switching views
+  useEffect(() => {
+    if (activeProject || activeExperience) {
+      // We opened a showcase view, scroll to top
+      window.scrollTo(0, 0);
+    } else {
+      // We returned to the main portfolio view, restore scroll position after layout
+      requestAnimationFrame(() => {
+        window.scrollTo(0, savedScrollPos.current);
+      });
     }
-  ];
+  }, [activeProject, activeExperience]);
 
-  const experiences = [
-    {
-      id: 'auto-accessories',
-      role: "Installateur indépendant d'accessoires automobiles",
-      company: "Projet indépendant / Travailleur autonome • Laval, Qc",
-      dates: "2025 -- Présent",
-      badge: "Électronique Automobile 12V & Multimédia",
-      bullets: [
-        "Installation, raccordement électrique et intégration d'équipements électroniques (écrans multimédias Apple CarPlay, feux F1, éclairage DRL) sur véhicules.",
-        "Diagnostic et test de circuits basse tension 12V à l'aide d'un multimètre pour un câblage propre et sécurisé.",
-        "Gestion de la relation client : analyse des besoins, estimation des coûts et respect rigoureux des délais."
-      ],
-      details: {
-        summary: "Travaux indépendants spécialisés dans le diagnostic, l'intégration et le raccordement électrique d'accessoires automobiles basse tension (12V) avec une finition propre de niveau d'origine.",
-        highlights: [
-          "Subaru Impreza 2016 : Installation, intégration de console et raccordement électrique complet d'une unité multimédia Apple CarPlay.",
-          "Feux de freinage Style F1 : Montage et raccordement électrique de feux de freinage / anti-brouillard dynamiques style F1 (voir démonstration vidéo ci-dessous).",
-          "Honda Accord 2018 : Installation d'un emblème lumineux dynamique Honda et intégration de feux de jour DRL / clignotants dynamiques sur rétroviseurs.",
-          "Raccordement & Sécurité 12V : Tests au multimètre, diagnostic de circuits basse tension 12V et intégration soignée des faisceaux électriques."
-        ],
-        media: [
-          {
-            type: 'video',
-            title: 'Feux de Freinage / Anti-Brouillard Style F1',
-            desc: 'Démonstration du fonctionnement et du clignotement dynamique des feux style F1 installés.',
-            src: carVideo
-          },
-          {
-            type: 'image',
-            title: 'Intégration Apple CarPlay — Subaru Impreza 2016',
-            desc: 'Aperçu de l’intégration de l’unité multimédia Apple CarPlay et du câblage dans une Subaru Impreza 2016.',
-            src: carplayImg
-          }
-        ]
+  const [lang, setLang] = useState(() => {
+    if (typeof window !== 'undefined') {
+      try {
+        const saved = localStorage.getItem('lang');
+        if (saved === 'fr' || saved === 'en') return saved;
+      } catch (e) {
+        console.warn('localStorage not accessible:', e);
       }
-    },
-    {
-      id: 'benevole-obn',
-      role: "Bénévole au Tournoi OBN (Tennis Canada)",
-      company: "Expérience des fans • Montréal, Qc",
-      dates: "Été 2026",
-      badge: "Nommé Bénévole le Plus Enthusiast",
-      bullets: [
-        "Nommé le bénévole le plus enthousiaste du tournoi et qualifié de véritable source d'inspiration pour l'équipe par les capitaines.",
-        "Animation des kiosques de jeux interactifs et distribution d'articles promotionnels auprès d'un grand volume de visiteurs.",
-        "Accueil, orientation des fans et assistance opérationnelle sur le site pour assurer la fluidité des activités."
-      ],
-      details: {
-        summary: "Engagement bénévole au prestigieux Omnium Banque Nationale (OBN) de Tennis Canada à Montréal, récompensé par la distinction du bénévole le plus enthousiaste et salué par la direction d'équipe.",
-        quote: "J'ai eu l'honneur de servir comme bénévole au tournoi de Tennis Canada à Montréal (Omnium Banque Nationale). J'y ai été nommé le bénévole le plus enthousiaste et mes capitaines m'ont qualifié de véritable source d'inspiration pour les autres bénévoles.",
-        highlights: [
-          "Honneur au Tournoi OBN : Fierté et honneur d'avoir fait partie de l'équipe officielle de bénévoles lors du tournoi international de Tennis Canada à Montréal.",
-          "Bénévole le Plus Enthousiaste : Récipiendaire de la mention d'honneur décernée au bénévole le plus enthousiaste du tournoi.",
-          "Reconnaissance des Capitaines : Salué par les capitaines d'équipe comme une source d'inspiration constante pour l'ensemble des bénévoles du site.",
-          "Animation & Service aux Fans : Accueil chaleureux des spectateurs, animation dynamique des jeux et gestion des flux sur le site du tournoi."
-        ],
-        media: [
-          {
-            type: 'image',
-            title: 'Bénévole Officiel — Omnium Banque Nationale (Tennis Canada)',
-            desc: 'Présence et implication sur le site du tournoi international de Tennis Canada à Montréal.',
-            src: benevoleImg
-          }
-        ]
-      }
+      const browserLang = (navigator && navigator.language) || 'en';
+      return browserLang.startsWith('en') ? 'en' : 'fr';
     }
-  ];
+    return 'fr';
+  });
 
-  const education = [
-    {
-      institution: "Collège Montmorency",
-      degree: "DEC en informatique -- Techniques de développement d'applications",
-      location: "Laval, Qc",
-      dates: "Août 2024 -- Décembre 2027",
-      details: "Structures de données et algorithmes, POO, Développement web, Systèmes de bases de données, Réseaux et OS."
-    },
-    {
-      institution: "Collège Citoyen",
-      degree: "Diplôme d'études secondaires (Implication : Club de robotique)",
-      location: "Laval, Qc",
-      dates: ""
+  useEffect(() => {
+    try {
+      localStorage.setItem('lang', lang);
+    } catch (e) {
+      console.warn('localStorage not accessible:', e);
     }
-  ];
+    document.documentElement.lang = lang;
+  }, [lang]);
+
+  const toggleLang = () => {
+    setLang(prev => (prev === 'fr' ? 'en' : 'fr'));
+  };
+
+  const t = translations[lang].ui;
+  const techStack = translations[lang].techStack;
+  const projects = translations[lang].projects;
+  const experiences = translations[lang].experiences;
+  const education = translations[lang].education;
+
 
   // If project is clicked, render Product Showcase View Page
   if (activeProject) {
     return (
       <main className="portfolio-container showcase-view">
-        <button className="btn-back" onClick={() => setActiveProject(null)}>
+        <button className="btn-back" onClick={closeShowcase}>
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
             <path d="M19 12H5M12 19l-7-7 7-7" />
           </svg>
-          Retour aux projets
+          {t.backToProjects}
         </button>
 
         <header className="showcase-header">
@@ -292,18 +166,13 @@ export default function App() {
           <p className="showcase-date">{activeProject.date} {activeProject.scoreBadge && `• ${activeProject.scoreBadge}`}</p>
         </header>
 
-        <div className="showcase-hero-img-wrapper">
-          <img
-            src={activeProject.image}
-            alt={activeProject.title}
-            className="showcase-hero-img"
-            onError={(e) => {
-              if (activeProject.fallbackImage) {
-                e.target.src = activeProject.fallbackImage;
-              }
-            }}
-          />
-        </div>
+        <ImgWithSkeleton
+          src={activeProject.image}
+          alt={activeProject.title}
+          className="showcase-hero-img"
+          wrapperClassName="showcase-hero-img-wrapper"
+          fallbackImage={activeProject.fallbackImage}
+        />
 
         <div className="showcase-tech-list">
           {activeProject.tech.map(t => (
@@ -320,7 +189,7 @@ export default function App() {
               <line x1="12" x2="12.01" y1="16" y2="16" />
             </svg>
             <span>
-              <strong>Note sur le code source :</strong> Le code source original de ce projet n'est plus accessible suite à l'expiration et à la fermeture de l'organisation GitHub Classroom du cours.
+              <strong>{t.sourceCodeNote}</strong> {t.sourceCodeNoteDesc}
             </span>
           </div>
         )}
@@ -328,9 +197,9 @@ export default function App() {
         {/* Sprint Scores Section (Luxurious Minimalist Style) */}
         {activeProject.sprints && (
           <section className="showcase-section">
-            <h2 className="showcase-section-title">Évaluation des Sprints & Résultats</h2>
+            <h2 className="showcase-section-title">{t.sprintEval}</h2>
             <p style={{ fontSize: '0.875rem', color: 'var(--muted)', marginBottom: '1rem', lineHeight: '1.6' }}>
-              Le mandat initial ciblait principalement l'élaboration de diagrammes fonctionnels. Notre équipe a fait le choix d'élever le projet au niveau d'une solution logicielle complète et prête au déploiement.
+              {t.sprintDesc}
             </p>
             <div className="sprints-container">
               {activeProject.sprints.map((sprint, i) => (
@@ -344,7 +213,7 @@ export default function App() {
               ))}
             </div>
             <div className="sprint-summary-banner">
-              <span className="sprint-summary-label">Note globale du projet</span>
+              <span className="sprint-summary-label">{t.globalScore}</span>
               <span className="sprint-summary-value">90.00% (Rang #1 • 28 pts de la note finale)</span>
             </div>
           </section>
@@ -353,7 +222,7 @@ export default function App() {
         {/* Video Showcase Section */}
         {activeProject.videos && (
           <section className="showcase-section">
-            <h2 className="showcase-section-title">Démonstrations Vidéo</h2>
+            <h2 className="showcase-section-title">{t.videoDemos}</h2>
             
             <div className="showcase-disclaimer">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
@@ -362,7 +231,7 @@ export default function App() {
                 <line x1="12" x2="12.01" y1="16" y2="16" />
               </svg>
               <span>
-                <strong>Avertissement d'environnement :</strong> Les démonstrations vidéo ci-dessous ont été enregistrées localement. Pour l'évaluation finale du projet, l'infrastructure complète a été déployée et hébergée sur Microsoft Azure Services ; l'hébergement en ligne continu a été arrêté afin d'éviter l'épuisement inutile des crédits étudiants Azure.
+                <strong>{t.envWarning}</strong> {t.envWarningDesc}
               </span>
             </div>
 
@@ -383,18 +252,17 @@ export default function App() {
         {/* Wiring Diagram Section */}
         {activeProject.wiringImage && (
           <section className="showcase-section">
-            <h2 className="showcase-section-title">Schéma de Câblage Électronique & Hardware</h2>
+            <h2 className="showcase-section-title">{t.wiringDiagram}</h2>
             <div className="showcase-wiring-layout">
-              <div className="showcase-wiring-img-wrapper">
-                <img
-                  src={activeProject.wiringImage}
-                  alt="Schéma de câblage de la station météo"
-                  className="showcase-wiring-img"
-                />
-              </div>
+              <ImgWithSkeleton
+                src={activeProject.wiringImage}
+                alt="Schéma de câblage de la station météo"
+                className="showcase-wiring-img"
+                wrapperClassName="showcase-wiring-img-wrapper"
+              />
               <div className="showcase-wiring-text">
                 <p>
-                  Schéma complet du câblage et du raccordement des composants électriques (convertisseur ADC I2C, photo-résistance, capteurs température/humidité et écran LCD) reliés aux broches GPIO du Raspberry Pi 5. Le système s'appuie sur une interface graphique <strong>Tkinter Python UI</strong> et des <strong>threads Python</strong> pour contrôler et surveiller en temps réel chaque composant électrique sans bloquer l'interface.
+                  {t.wiringDesc1}<strong>Tkinter Python UI</strong>{t.wiringDesc2}<strong>threads Python</strong>{t.wiringDesc3}
                 </p>
               </div>
             </div>
@@ -629,10 +497,10 @@ export default function App() {
         </section>
 
         <footer className="footer">
-          <button className="btn-back" onClick={() => setActiveProject(null)}>
-            ← Retour au portfolio
+          <button className="btn-back" onClick={closeShowcase}>
+            {t.backToPortfolio}
           </button>
-          <p>&copy; {new Date().getFullYear()} Tigran Matinyan. Tous droits réservés.</p>
+          <p>&copy; {new Date().getFullYear()} Tigran Matinyan. {t.rightsReserved}</p>
         </footer>
       </main>
     );
@@ -642,7 +510,7 @@ export default function App() {
   if (activeExperience) {
     return (
       <main className="portfolio-container showcase-view">
-        <button className="btn-back" onClick={() => setActiveExperience(null)}>
+        <button className="btn-back" onClick={closeShowcase}>
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
             <path d="M19 12H5M12 19l-7-7 7-7" />
           </svg>
@@ -686,18 +554,18 @@ export default function App() {
                   {item.type === 'video' ? (
                     <VideoPlayer src={item.src} title={item.title} />
                   ) : (
-                    <div className="showcase-hero-img-wrapper" style={{ marginTop: '0.75rem' }}>
-                      <img
-                        src={item.src}
-                        alt={item.title}
-                        className="showcase-hero-img"
-                        style={{
-                          maxHeight: '420px',
-                          objectFit: 'contain',
-                          transform: item.flip ? 'scaleX(-1)' : 'none'
-                        }}
-                      />
-                    </div>
+                    <ImgWithSkeleton
+                      src={item.src}
+                      alt={item.title}
+                      className="showcase-hero-img"
+                      wrapperClassName="showcase-hero-img-wrapper"
+                      style={{
+                        marginTop: '0.75rem',
+                        maxHeight: '420px',
+                        objectFit: 'contain',
+                        transform: item.flip ? 'scaleX(-1)' : 'none'
+                      }}
+                    />
                   )}
                 </div>
               ))}
@@ -708,7 +576,7 @@ export default function App() {
         {/* Highlights Section */}
         {activeExperience.details?.highlights && (
           <section className="showcase-section">
-            <h2 className="showcase-section-title">Points Saillants & Réalisations</h2>
+            <h2 className="showcase-section-title">{t.keyFeatures}</h2>
             <ul className="showcase-highlights">
               {activeExperience.details.highlights.map((point, index) => (
                 <li key={index}>{point}</li>
@@ -718,10 +586,10 @@ export default function App() {
         )}
 
         <footer className="footer">
-          <button className="btn-back" onClick={() => setActiveExperience(null)}>
-            ← Retour au portfolio
+          <button className="btn-back" onClick={closeShowcase}>
+            {t.backToPortfolio}
           </button>
-          <p>&copy; {new Date().getFullYear()} Tigran Matinyan. Tous droits réservés.</p>
+          <p>&copy; {new Date().getFullYear()} Tigran Matinyan. {t.rightsReserved}</p>
         </footer>
       </main>
     );
@@ -734,30 +602,38 @@ export default function App() {
       <div className="header-profile">
         <div>
           <h1 className="profile-name">Tigran Matinyan</h1>
-          <p className="profile-role">Développeur Software & Full-Stack</p>
-          <p className="profile-location">Laval (Québec), Canada</p>
-          <p className="profile-bio">
-            Étudiant en informatique passionné par la technologie, spécialisé en développement logiciel et web full-stack. 
-            Objectif: devenir ingénieur informatique.
-          </p>
+          <p className="profile-role">{t.role}</p>
+          <p className="profile-location">{t.location}</p>
+          <p className="profile-bio">{t.bio}</p>
         </div>
-        <button
-          onClick={toggleTheme}
-          aria-label="Toggle theme"
-          className="theme-toggle-btn"
-          title={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
-        >
-          {theme === 'dark' ? (
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-              <circle cx="12" cy="12" r="5" />
-              <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" />
-            </svg>
-          ) : (
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-              <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" />
-            </svg>
-          )}
-        </button>
+        <div style={{ display: 'flex', gap: '0.5rem' }}>
+          <button
+            onClick={toggleLang}
+            aria-label="Toggle language"
+            className="theme-toggle-btn"
+            title={`Switch to ${lang === 'fr' ? 'English' : 'Français'}`}
+            style={{ fontWeight: 600, fontSize: '0.85rem' }}
+          >
+            {lang === 'fr' ? 'EN' : 'FR'}
+          </button>
+          <button
+            onClick={toggleTheme}
+            aria-label="Toggle theme"
+            className="theme-toggle-btn"
+            title={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
+          >
+            {theme === 'dark' ? (
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <circle cx="12" cy="12" r="5" />
+                <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" />
+              </svg>
+            ) : (
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" />
+              </svg>
+            )}
+          </button>
+        </div>
       </div>
 
       {/* Actions & Contact Bar */}
@@ -770,7 +646,7 @@ export default function App() {
             <rect width="20" height="16" x="2" y="4" rx="2" />
             <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
           </svg>
-          Me contacter
+          {t.contactMe}
         </a>
 
         <a
@@ -813,7 +689,7 @@ export default function App() {
 
       {/* Tech Stack Section */}
       <section className="section">
-        <h2 className="section-title">Compétences Techniques</h2>
+        <h2 className="section-title">{t.techSkills}</h2>
         <div className="tech-grid">
           {techStack.map(tech => (
             <div key={tech.name} className="tech-pill" data-tech={tech.techKey}>
@@ -825,22 +701,17 @@ export default function App() {
 
       {/* Projects Section */}
       <section className="section" id="projects">
-        <h2 className="section-title">Projets (Cliquer pour ouvrir la vitrine produit)</h2>
+        <h2 className="section-title">{t.projectsTitle}</h2>
         <div className="projects-grid">
           {projects.map(project => (
-            <div key={project.id} className="project-card" onClick={() => setActiveProject(project)}>
-              <div className="project-img-wrapper">
-                <img
-                  src={project.image}
-                  alt={project.title}
-                  className="project-img"
-                  onError={(e) => {
-                    if (project.fallbackImage) {
-                      e.target.src = project.fallbackImage;
-                    }
-                  }}
-                />
-              </div>
+            <div key={project.id} className="project-card" onClick={() => openProject(project)}>
+              <ImgWithSkeleton
+                src={project.image}
+                alt={project.title}
+                className="project-img"
+                wrapperClassName="project-img-wrapper"
+                fallbackImage={project.fallbackImage}
+              />
               <div className="project-header">
                 <h3 className="project-title">{project.title}</h3>
                 <span className="project-link-icon" title="Ouvrir la vitrine du produit">
@@ -857,7 +728,7 @@ export default function App() {
 
       {/* Experience Section */}
       <section className="section">
-        <h2 className="section-title">Expérience et implication</h2>
+        <h2 className="section-title">{t.experienceTitle}</h2>
         <div className="timeline-list">
           {experiences.map(exp => (
             <div key={exp.company + exp.role} className="timeline-item">
@@ -872,9 +743,9 @@ export default function App() {
                 {exp.details && (
                   <button
                     className="btn-learn-more"
-                    onClick={() => setActiveExperience(exp)}
+                    onClick={() => openExperience(exp)}
                   >
-                    En savoir plus
+                    {t.learnMore}
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                       <path d="M5 12h14M12 5l7 7-7 7" />
                     </svg>
@@ -890,7 +761,7 @@ export default function App() {
 
       {/* Education Section */}
       <section className="section">
-        <h2 className="section-title">Formation</h2>
+        <h2 className="section-title">{t.educationTitle}</h2>
         <div className="timeline-list">
           {education.map(edu => (
             <div key={edu.institution} className="timeline-item">
@@ -907,7 +778,7 @@ export default function App() {
 
       {/* Contact Section */}
       <section className="section" id="contact">
-        <h2 className="section-title">Coordonnées & Réseaux</h2>
+        <h2 className="section-title">{t.contactTitle}</h2>
         <div className="contact-cards-grid">
           <a href="mailto:tigrannmatinyan@icloud.com" className="contact-card">
             <div className="contact-card-icon">
@@ -917,7 +788,7 @@ export default function App() {
               </svg>
             </div>
             <div>
-              <span className="contact-card-label">Courriel</span>
+              <span className="contact-card-label">{t.email}</span>
               <span className="contact-card-value">tigrannmatinyan@icloud.com</span>
             </div>
           </a>
@@ -929,7 +800,7 @@ export default function App() {
               </svg>
             </div>
             <div>
-              <span className="contact-card-label">Téléphone</span>
+              <span className="contact-card-label">{t.phone}</span>
               <span className="contact-card-value">+1 (438) 373-1919</span>
             </div>
           </a>
@@ -966,7 +837,7 @@ export default function App() {
           <a href="#projects">Projets</a>
           <a href="https://www.linkedin.com/in/tigran-micheal-matinyan/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
           <a href="https://github.com/CTigranMM" target="_blank" rel="noopener noreferrer">GitHub</a>
-          <a href="mailto:tigrannmatinyan@icloud.com">Courriel</a>
+          <a href="mailto:tigrannmatinyan@icloud.com">{t.email}</a>
           <a href="tel:14383731919">+1 (438) 373-1919</a>
         </nav>
         <p>&copy; {new Date().getFullYear()} Tigran Matinyan. Tous droits réservés.</p>
