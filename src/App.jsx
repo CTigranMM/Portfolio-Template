@@ -144,6 +144,7 @@ export default function App() {
 
   const t = translations[lang].ui;
   const techStack = translations[lang].techStack;
+  const hobbies = translations[lang].hobbies;
   const projects = translations[lang].projects;
   const experiences = translations[lang].experiences;
   const education = translations[lang].education;
@@ -771,6 +772,18 @@ export default function App() {
                 {edu.details && <p style={{ fontSize: '0.875rem', color: 'var(--muted)', marginTop: '0.25rem' }}>{edu.details}</p>}
               </div>
               {edu.dates && <span className="timeline-date">{edu.dates}</span>}
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Hobbies Section */}
+      <section className="section" id="hobbies">
+        <h2 className="section-title">{t.hobbiesTitle}</h2>
+        <div className="tech-grid">
+          {hobbies.map(hobby => (
+            <div key={hobby.name} className="tech-pill" data-tech={hobby.techKey}>
+              {hobby.name}
             </div>
           ))}
         </div>

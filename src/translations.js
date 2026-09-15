@@ -21,6 +21,7 @@ export const translations = {
       experienceTitle: "Expérience et implication",
       educationTitle: "Formation",
       contactTitle: "Coordonnées & Réseaux",
+      hobbiesTitle: "En savoir plus sur moi (Loisirs)",
       backToPortfolio: "← Retour au portfolio",
       backToProjects: "Retour aux projets",
       backToExperiences: "Retour aux expériences",
@@ -56,6 +57,19 @@ export const translations = {
       { name: 'Node.js', techKey: 'nodejs' },
       { name: 'MongoDB', techKey: 'mongodb' },
       { name: 'Azure', techKey: 'azure' }
+    ],
+    hobbies: [
+      { name: 'Création de jeux (Unity)', techKey: 'unity' },
+      { name: 'Modélisation 3D (Blender)', techKey: 'blender' },
+      { name: 'CAO / CAD (Fusion)', techKey: 'fusion' },
+      { name: 'Design UX (Figma)', techKey: 'figma' },
+      { name: 'Électronique', techKey: 'electronics' },
+      { name: 'Matériel Informatique', techKey: 'hardware' },
+      { name: 'Arts Martiaux Mixtes (MMA)', techKey: 'mma' },
+      { name: 'Badminton', techKey: 'badminton' },
+      { name: 'Tennis (Débutant)', techKey: 'tennis' },
+      { name: 'Sports Motorisés', techKey: 'motorsport' },
+      { name: 'Passionné d\'Auto (Petrolhead)', techKey: 'petrolhead' }
     ],
     projects: [
       {
@@ -253,6 +267,7 @@ export const translations = {
       experienceTitle: "Experience & Involvement",
       educationTitle: "Education",
       contactTitle: "Contact & Links",
+      hobbiesTitle: "More about me (Hobbies)",
       backToPortfolio: "← Back to portfolio",
       backToProjects: "Back to projects",
       backToExperiences: "Back to experiences",
@@ -288,6 +303,19 @@ export const translations = {
       { name: 'Node.js', techKey: 'nodejs' },
       { name: 'MongoDB', techKey: 'mongodb' },
       { name: 'Azure', techKey: 'azure' }
+    ],
+    hobbies: [
+      { name: 'Unity Game Making', techKey: 'unity' },
+      { name: '3D Modeling (Blender)', techKey: 'blender' },
+      { name: 'CAD (Fusion)', techKey: 'fusion' },
+      { name: 'UX Design (Figma)', techKey: 'figma' },
+      { name: 'Electronics', techKey: 'electronics' },
+      { name: 'Computers (Hardware)', techKey: 'hardware' },
+      { name: 'Mixed Martial Arts (MMA)', techKey: 'mma' },
+      { name: 'Badminton', techKey: 'badminton' },
+      { name: 'Tennis (Beginner)', techKey: 'tennis' },
+      { name: 'Motor Sports', techKey: 'motorsport' },
+      { name: 'Petrol Head', techKey: 'petrolhead' }
     ],
     projects: [
       {
