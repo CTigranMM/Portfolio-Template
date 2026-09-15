@@ -501,7 +501,7 @@ export default function App() {
           <button className="btn-back" onClick={closeShowcase}>
             {t.backToPortfolio}
           </button>
-          <p>&copy; {new Date().getFullYear()} Tigran Matinyan. {t.rightsReserved}</p>
+          <p>&copy; {new Date().getFullYear()} Tigran Matinyan. {t.rightsReserved} | {t.hostedOnAws}</p>
         </footer>
       </main>
     );
@@ -590,7 +590,7 @@ export default function App() {
           <button className="btn-back" onClick={closeShowcase}>
             {t.backToPortfolio}
           </button>
-          <p>&copy; {new Date().getFullYear()} Tigran Matinyan. {t.rightsReserved}</p>
+          <p>&copy; {new Date().getFullYear()} Tigran Matinyan. {t.rightsReserved} | {t.hostedOnAws}</p>
         </footer>
       </main>
     );
@@ -639,6 +639,17 @@ export default function App() {
 
       {/* Actions & Contact Bar */}
       <div className="actions-row">
+        <a
+          href={t.cvFile}
+          download="CV-TigranMatinyan.pdf"
+          className="btn-resume"
+          style={{ background: 'transparent', color: 'var(--fg)', border: '1px solid var(--border)' }}
+        >
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3" />
+          </svg>
+          {t.downloadCv}
+        </a>
         <a
           href="mailto:tigrannmatinyan@icloud.com"
           className="btn-resume"
@@ -853,7 +864,7 @@ export default function App() {
           <a href="mailto:tigrannmatinyan@icloud.com">{t.email}</a>
           <a href="tel:14383731919">+1 (438) 373-1919</a>
         </nav>
-        <p>&copy; {new Date().getFullYear()} Tigran Matinyan. Tous droits réservés.</p>
+        <p>&copy; {new Date().getFullYear()} Tigran Matinyan. {t.rightsReserved} | {t.hostedOnAws}</p>
       </footer>
     </main>
   );
