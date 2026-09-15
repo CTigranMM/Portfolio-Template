@@ -2,12 +2,10 @@
 
 A modern, customizable portfolio website built with **React** and **Vite**. This template is open-source and can be used by anyone to showcase their projects, skills, experience, and contact information.
 
-## Features
+# Use of ai
 
-- **React 19 & Vite**
-- **Fully Customizable**: Simple component structure to quickly swap out text, images, and project details.
-- **Responsive Layout**: Designed to look great on desktop, tablet, and mobile devices.
-- **Open-Source Template**: Free to clone, fork, and adapt for your own personal portfolio.
+Ai was used to accelerate the development of this website. It was used to generate the code for the website, as well as to help with the design and layout of the website. It helped more specifically in the css, transfering the base from my cv, optimising and debugging the code, translating everything and did the router. (I was in a rush to make this website ready for my internship search).
+
 
 ## Getting Started
 
