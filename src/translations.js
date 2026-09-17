@@ -10,6 +10,7 @@ import carplayImg from './assets/appleCarplay.jpeg';
 import carVideo from './assets/car.mp4';
 import cvPdf from './assets/CV-TigranMatinyan.pdf';
 
+
 export const translations = {
   fr: {
     ui: {
