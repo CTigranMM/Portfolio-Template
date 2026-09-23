@@ -1,5 +1,6 @@
 import checkoutVideo from './assets/CheckoutDEMOAgence.mp4';
 import restVideo from './assets/RESTDEMOAgence.mp4';
+import javaAppVideo from './assets/JavaAppDemoAgence.mp4';
 import agenceGif from './assets/agence_abc.gif';
 import duckHuntGif from './assets/duck_hunt.gif';
 import meteoModuleImg from './assets/meteomodule.png';
@@ -16,7 +17,7 @@ export const translations = {
     ui: {
       role: "Développeur Software & Full-Stack",
       location: "Laval (Québec), Canada",
-      bio: "Étudiant en informatique passionné par la technologie, spécialisé en développement logiciel et web full-stack. Toujours à la recherche de nouveaux défis et de solutions innovantes. Actuellement à la recherche d'un stage pour l'été 2027.",
+      bio: "Étudiant en informatique passionné par la technologie, spécialisé en développement logiciel et web full-stack. Toujours à la recherche de nouveaux défis et de solutions innovantes. Actuellement à la recherche d'un stage pour l'hiver 2027.",
       contactMe: "Me contacter",
       downloadCv: "Télécharger mon CV",
       cvFile: cvPdf,
@@ -120,6 +121,12 @@ export const translations = {
             title: 'API REST & Synchronisation MongoDB',
             desc: 'Validation des échanges de données RESTful, des jetons JWT et des transactions en base de données.',
             src: restVideo
+          },
+          {
+            id: 'java-ui-demo',
+            title: 'Interface Utilisateur Java',
+            desc: 'Démonstration de l\'interface utilisateur Java que nous avons créée, connectée au backend.',
+            src: javaAppVideo
           }
         ]
       },
@@ -266,7 +273,7 @@ export const translations = {
     ui: {
       role: "Software & Full-Stack Developer",
       location: "Laval (Quebec), Canada",
-      bio: "Computer science student passionate about technology, specializing in software and full-stack web development. Always looking for new challenges and innovative solutions. Currently seeking an internship for Summer 2027.",
+      bio: "Computer science student passionate about technology, specializing in software and full-stack web development. Always looking for new challenges and innovative solutions. Currently seeking an internship for Winter 2027.",
       contactMe: "Contact Me",
       downloadCv: "Download my CV",
       cvFile: cvPdf,
@@ -370,6 +377,12 @@ export const translations = {
             title: 'REST API & MongoDB Synchronization',
             desc: 'Validation of RESTful data exchanges, JWT tokens, and database transactions.',
             src: restVideo
+          },
+          {
+            id: 'java-ui-demo',
+            title: 'Java UI Demonstration',
+            desc: 'It shows the java ui we made that connects to the backend.',
+            src: javaAppVideo
           }
         ]
       },
