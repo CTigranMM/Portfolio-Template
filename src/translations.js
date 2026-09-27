@@ -10,7 +10,7 @@ import benevoleImg from './assets/Benevole.jpeg';
 import carplayImg from './assets/appleCarplay.jpeg';
 import carVideo from './assets/car.mp4';
 import cvPdf from './assets/CV-TigranMatinyan.pdf';
-
+import demoGitGif from './assets/DemoGit.gif';
 
 export const translations = {
   fr: {
@@ -170,10 +170,10 @@ export const translations = {
       {
         id: 'app-collab',
         title: 'Application Web Collaborative (Stack MERN)',
-        subtitle: 'Initiation au Stack MERN, API RESTful, Authentification JWT & Hébergement Vercel',
+        subtitle: 'Initiation au Stack MERN, API RESTful, Authentification JWT & Hébergement Render',
         date: 'Février 2026',
-        tech: ['React.js', 'Express.js', 'MongoDB', 'Node.js', 'JWT Auth', 'REST API', 'Vercel', 'Git'],
-        image: collabMaquetteImg,
+        tech: ['React.js', 'Express.js', 'MongoDB', 'Node.js', 'JWT Auth', 'REST API', 'Render', 'Git'],
+        image: demoGitGif,
         fallbackImage: '/assets/MaquetteCollaboration.png',
         scoreBadge: 'Projet Fondateur MERN',
         desc: "Projet pionnier d'initiation à l'architecture MERN (MongoDB, Express, React, Node) ayant servi de tremplin technique indispensable pour la réalisation ultérieure du projet Agence ABC.",
@@ -181,7 +181,7 @@ export const translations = {
           "Tremplin MERN & Fondation d'Agence ABC : Premier projet d'équipe ayant permis à la classe d'assimiler l'architecture MERN (MongoDB, Express, React, Node), posant les bases de compétences réutilisées sur l'Agence Touristique ABC.",
           "Architecture Full-Stack MERN : Structuration entre l'interface utilisateur React.js, l'API REST Express.js / Node.js et la base de données NoSQL MongoDB.",
           "Sécurité & Échanges REST : Développement d'endpoints RESTful et contrôle d'accès sécurisé par jetons d'authentification JWT (JSON Web Tokens).",
-          "Déploiement Cloud Vercel : Hébergement continu sur la plateforme Vercel (solution accessible et beginner-friendly pour les projets MERN).",
+          "Déploiement Cloud Render : Hébergement continu sur la plateforme Render (solution accessible et beginner-friendly pour les projets MERN).",
           "Workflow Collaboratif Git : Travail d'équipe axé sur la gestion des branches Git, revues de code, pull requests et résolution de conflits."
         ]
       }
@@ -426,10 +426,10 @@ export const translations = {
       {
         id: 'app-collab',
         title: 'Collaborative Web App (MERN Stack)',
-        subtitle: 'Introduction to MERN Stack, RESTful API, JWT Auth & Vercel Hosting',
+        subtitle: 'Introduction to MERN Stack, RESTful API, JWT Auth & Render Hosting',
         date: 'February 2026',
-        tech: ['React.js', 'Express.js', 'MongoDB', 'Node.js', 'JWT Auth', 'REST API', 'Vercel', 'Git'],
-        image: collabMaquetteImg,
+        tech: ['React.js', 'Express.js', 'MongoDB', 'Node.js', 'JWT Auth', 'REST API', 'Render', 'Git'],
+        image: demoGitGif,
         fallbackImage: '/assets/MaquetteCollaboration.png',
         scoreBadge: 'Foundational MERN Project',
         desc: "Pioneering team project introducing the MERN architecture (MongoDB, Express, React, Node), serving as an essential technical stepping stone for the subsequent ABC Agency project.",
@@ -437,7 +437,7 @@ export const translations = {
           "MERN Stepping Stone & ABC Agency Foundation: First team project that allowed the class to master the MERN architecture, laying the groundwork for skills reused on the ABC Travel Agency.",
           "Full-Stack MERN Architecture: Structuring between the React.js user interface, the Express.js / Node.js REST API, and the MongoDB NoSQL database.",
           "Security & REST Exchanges: Development of RESTful endpoints and secure access control via JWT (JSON Web Tokens) authentication.",
-          "Vercel Cloud Deployment: Continuous hosting on the Vercel platform (accessible and beginner-friendly solution for MERN projects).",
+          "Render Cloud Deployment: Continuous hosting on the Render platform (accessible and beginner-friendly solution for MERN projects).",
           "Git Collaborative Workflow: Teamwork focused on Git branch management, code reviews, pull requests, and conflict resolution."
         ]
       }
