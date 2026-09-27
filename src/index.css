@@ -1,30 +1,27 @@
-@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap');
-
 :root {
-  --bg: #f5f5f5;
-  --bg-card: rgba(255, 255, 255, 0.4);
-  --fg: #1a1a1a;
-  --muted: #7a7a7a;
-  --border: #e3e3e3;
-  --primary: #1a1a1a;
+  --bg: #ffffff;
+  --bg-card: #ffffff;
+  --fg: #09090b;
+  --muted: #71717a;
+  --border: #e4e4e7;
+  --primary: #09090b;
   --primary-fg: #ffffff;
-  --primary-hover: #000000;
-  --card-hover: rgba(255, 255, 255, 0.6);
+  --primary-hover: #27272a;
+  --card-hover: #fafafa;
   --font-sans: 'Geist', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   --font-mono: 'Geist Mono', monospace;
-  --font-serif: 'Instrument Serif', serif;
 }
 
 .dark {
-  --bg: #0a0a0a;
-  --bg-card: rgba(28, 28, 28, 0.4);
-  --fg: #e3e3e3;
-  --muted: #8c8c8c;
-  --border: #262626;
-  --primary: #e3e3e3;
-  --primary-fg: #080808;
-  --primary-hover: #ffffff;
-  --card-hover: rgba(28, 28, 28, 0.6);
+  --bg: #1c1c1c;
+  --bg-card: #1c1c1c;
+  --fg: #f4f4f5;
+  --muted: #a1a1aa;
+  --border: #27272a;
+  --primary: #f4f4f5;
+  --primary-fg: #09090b;
+  --primary-hover: #e4e4e7;
+  --card-hover: #242424;
 }
 
 * {
@@ -91,12 +88,10 @@ button {
 }
 
 .section-title {
-  font-family: var(--font-serif);
-  font-size: 1.5rem; /* 24px */
-  font-style: italic;
-  font-weight: 400;
-  color: var(--muted);
-  margin-bottom: 1.25rem;
+  font-size: 0.875rem; /* 14px */
+  font-weight: 500;
+  color: var(--fg);
+  margin-bottom: 1rem;
 }
 
 /* Header & Profile */
@@ -108,13 +103,10 @@ button {
 }
 
 .profile-name {
-  font-family: var(--font-serif);
-  font-size: 2.75rem; /* 44px */
-  font-weight: 400;
-  letter-spacing: -0.01em;
+  font-size: 1.5rem; /* 24px */
+  font-weight: 600;
+  letter-spacing: -0.025em;
   color: var(--fg);
-  line-height: 1.1;
-  margin-bottom: 0.25rem;
 }
 
 .profile-role {
@@ -435,9 +427,8 @@ button {
 }
 
 .project-title {
-  font-family: var(--font-serif);
-  font-size: 1.5rem;
-  font-weight: 400;
+  font-size: 1.125rem;
+  font-weight: 500;
   color: var(--fg);
 }
 
@@ -485,10 +476,9 @@ button {
 }
 
 .timeline-role {
-  font-family: var(--font-serif);
-  font-weight: 400;
+  font-weight: 500;
   color: var(--fg);
-  font-size: 1.25rem;
+  font-size: 0.9375rem;
 }
 
 .timeline-company {
@@ -555,10 +545,9 @@ button {
 }
 
 .showcase-title {
-  font-family: var(--font-serif);
-  font-size: 2.25rem;
-  font-weight: 400;
-  letter-spacing: -0.01em;
+  font-size: 1.75rem;
+  font-weight: 600;
+  letter-spacing: -0.025em;
   color: var(--fg);
 }
 
@@ -639,10 +628,9 @@ button {
 }
 
 .showcase-section-title {
-  font-family: var(--font-serif);
-  font-size: 1.25rem;
-  font-weight: 400;
-  color: var(--muted);
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--fg);
   margin-bottom: 1rem;
 }
 
