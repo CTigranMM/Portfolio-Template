@@ -929,3 +929,90 @@ button {
   margin: 0;
 }
 
+/* -------------------------------------
+   NEW LOOK: ANIMATIONS & BLURS
+-------------------------------------- */
+
+/* Blurred Background Blobs */
+.bg-blob {
+  position: fixed;
+  border-radius: 50%;
+  filter: blur(80px);
+  z-index: -1;
+  opacity: 0.6;
+  animation: blob-float 15s infinite alternate ease-in-out;
+  pointer-events: none;
+}
+
+.blob-1 {
+  width: 40vw;
+  height: 40vw;
+  background: radial-gradient(circle, rgba(100,200,255,0.25) 0%, rgba(100,200,255,0) 70%);
+  top: -10vh;
+  left: -10vw;
+}
+
+.blob-2 {
+  width: 50vw;
+  height: 50vw;
+  background: radial-gradient(circle, rgba(200,100,255,0.2) 0%, rgba(200,100,255,0) 70%);
+  bottom: -20vh;
+  right: -10vw;
+  animation-delay: -5s;
+}
+
+.dark .blob-1 {
+  background: radial-gradient(circle, rgba(50,150,255,0.15) 0%, rgba(50,150,255,0) 70%);
+}
+
+.dark .blob-2 {
+  background: radial-gradient(circle, rgba(150,50,255,0.15) 0%, rgba(150,50,255,0) 70%);
+}
+
+@keyframes blob-float {
+  0% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(5vw, 10vh) scale(1.1); }
+  100% { transform: translate(-5vw, -5vh) scale(0.9); }
+}
+
+/* Glassmorphism for cards */
+.project-card, .timeline-item, .contact-card {
+  background: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255,255,255,0.4) !important;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
+}
+
+.dark .project-card, .dark .timeline-item, .dark .contact-card {
+  background: rgba(28, 28, 28, 0.4);
+  border: 1px solid rgba(255,255,255,0.05) !important;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* Reveal up animation for staggered loading */
+@keyframes reveal-up {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+    filter: blur(8px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+.portfolio-container > * {
+  animation: reveal-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.portfolio-container > *:nth-child(1) { animation-delay: 0.1s; }
+.portfolio-container > *:nth-child(2) { animation-delay: 0.2s; }
+.portfolio-container > *:nth-child(3) { animation-delay: 0.3s; }
+.portfolio-container > *:nth-child(4) { animation-delay: 0.4s; }
+.portfolio-container > *:nth-child(5) { animation-delay: 0.5s; }
+.portfolio-container > *:nth-child(6) { animation-delay: 0.6s; }
+.portfolio-container > *:nth-child(7) { animation-delay: 0.7s; }
+.portfolio-container > *:nth-child(8) { animation-delay: 0.8s; }
