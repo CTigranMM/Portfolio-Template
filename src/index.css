@@ -1016,3 +1016,83 @@ button {
 .portfolio-container > *:nth-child(6) { animation-delay: 0.6s; }
 .portfolio-container > *:nth-child(7) { animation-delay: 0.7s; }
 .portfolio-container > *:nth-child(8) { animation-delay: 0.8s; }
+
+/* -------------------------------------
+   APPLE HIG POLISH
+-------------------------------------- */
+:root {
+  --font-sans: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Icons", "Helvetica Neue", Arial, sans-serif;
+}
+
+/* Rounded UI Elements */
+.theme-toggle-btn {
+  border-radius: 50% !important;
+}
+
+.btn-resume, .contact-pill, .tech-pill, .btn-back, .btn-learn-more {
+  border-radius: 999px !important;
+}
+
+.social-icon-btn, .contact-card-icon {
+  border-radius: 50% !important;
+}
+
+.project-img-wrapper, .showcase-hero-img-wrapper, .showcase-wiring-img-wrapper {
+  border-radius: 16px !important;
+  border: none !important;
+}
+
+.project-badge, .tech-pill {
+  border: none !important;
+  background: rgba(150, 150, 150, 0.15) !important;
+}
+
+.timeline-item {
+  padding: 1.25rem !important;
+  border-radius: 16px !important;
+  background: var(--bg-card);
+}
+
+/* Glassmorphism updates (Vibrancy & Material) */
+.project-card, .dark .project-card {
+  padding: 0 !important;
+  border: none !important;
+  background: transparent !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  box-shadow: none !important;
+}
+
+.project-card .project-img-wrapper {
+  background: rgba(255, 255, 255, 0.5) !important;
+  backdrop-filter: blur(20px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
+  border: none !important;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05) !important;
+}
+
+.dark .project-card .project-img-wrapper {
+  background: rgba(28, 28, 28, 0.5) !important;
+  border: none !important;
+}
+
+.contact-card, .timeline-item {
+  border-radius: 16px !important;
+  background: rgba(255, 255, 255, 0.6) !important;
+  backdrop-filter: blur(20px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
+  border: none !important;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.04) !important;
+}
+
+.dark .contact-card, .dark .timeline-item {
+  background: rgba(28, 28, 28, 0.6) !important;
+  border: none !important;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2) !important;
+}
+
+/* High contrast typography adjustments */
+.profile-name, .section-title, .project-title, .showcase-title {
+  letter-spacing: -0.02em !important;
+  font-weight: 600 !important;
+}
