@@ -47,4 +47,4 @@ Feel free to fork or clone this repository and customize it for your personal po
 
 ### License
 The source code of this portfolio is licensed under the [MIT License](LICENSE).
-All personal assets, images, brand design, and written content (articles, project case studies, and bio) are copyright © [Year] [Your Name]. All rights reserved.
+All personal assets, images, brand design, and written content (articles, project case studies, and bio) are copyright © 2026 Tigran Michael Matinyan. All rights reserved.
