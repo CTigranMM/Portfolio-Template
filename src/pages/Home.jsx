@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { AppContext } from '../context/AppContext';
 import { ImgWithSkeleton } from '../components/Shared';
 
@@ -253,6 +253,7 @@ export default function Home() {
           <a href="https://github.com/CTigranMM" target="_blank" rel="noopener noreferrer">GitHub</a>
           <a href="https://github.com/CTigranMM/Portfolio-Template" target="_blank" rel="noopener noreferrer">{t.sourceCode}</a>
           <a href="mailto:tigrannmatinyan@icloud.com">{t.email}</a>
+          <Link to="/marketing" className="footer-pres-link" style={{ fontSize: '0.8rem', opacity: 0.65, textDecoration: 'none' }}>Pres</Link>
 
         </nav>
         <p>&copy; {new Date().getFullYear()} Tigran Matinyan. {t.rightsReserved} | {t.hostedOnAws}</p>
