@@ -101,7 +101,7 @@ export default function Marketing() {
       },
       {
         root: container,
-        threshold: 0.45,
+        threshold: 0.2,
       }
     );
 
@@ -263,7 +263,7 @@ export default function Marketing() {
         /* Snap Section */
         .mkt-snap-section {
           scroll-snap-align: start;
-          scroll-snap-stop: always;
+          scroll-snap-stop: normal;
           height: 100vh;
           min-height: 100vh;
           width: 100%;
@@ -695,6 +695,10 @@ export default function Marketing() {
 
         /* Responsive Layout Adjustments */
         @media (max-width: 860px) {
+          .mkt-scroll-container {
+            scroll-snap-type: y proximity;
+            -webkit-overflow-scrolling: touch;
+          }
           .mkt-topbar {
             padding: 0 1.5rem;
           }
@@ -790,6 +794,8 @@ export default function Marketing() {
             max-width: 100vw;
             box-sizing: border-box;
             overflow: visible;
+            scroll-snap-align: start;
+            scroll-snap-stop: normal;
           }
           .mkt-content-wrap {
             width: 100%;
@@ -812,15 +818,18 @@ export default function Marketing() {
 
       {/* Right Magnetic Navigation Dots */}
       <nav className="mkt-snap-nav" aria-label="Navigation magnétique">
-        {sections.map((sec, idx) => (
-          <button
-            key={sec.id}
-            className={`mkt-snap-dot ${activeSection === idx ? 'active' : ''}`}
-            onClick={() => scrollToSection(idx)}
-            aria-label={`Section ${sec.label}`}
-            title={sec.label}
-          />
-        ))}
+        {sections.slice(1).map((sec, idx) => {
+          const sectionIndex = idx + 1;
+          return (
+            <button
+              key={sec.id}
+              className={`mkt-snap-dot ${activeSection === sectionIndex ? 'active' : ''}`}
+              onClick={() => scrollToSection(sectionIndex)}
+              aria-label={`Section ${sec.label}`}
+              title={sec.label}
+            />
+          );
+        })}
       </nav>
 
       {/* Magnetic Scroll Snapping Container */}
