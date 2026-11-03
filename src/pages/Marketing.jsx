@@ -38,6 +38,23 @@ export default function Marketing() {
     { id: 'mauvais', label: 'À éviter' },
   ];
 
+  // Prevent horizontal swiping on mobile strictly while on this page
+  useEffect(() => {
+    const origHtmlOverflowX = document.documentElement.style.overflowX;
+    const origBodyOverflowX = document.body.style.overflowX;
+    const origBodyTouchAction = document.body.style.touchAction;
+
+    document.documentElement.style.overflowX = 'hidden';
+    document.body.style.overflowX = 'hidden';
+    document.body.style.touchAction = 'pan-y';
+
+    return () => {
+      document.documentElement.style.overflowX = origHtmlOverflowX;
+      document.body.style.overflowX = origBodyOverflowX;
+      document.body.style.touchAction = origBodyTouchAction;
+    };
+  }, []);
+
   // Initial deck dispersion shortly after mount
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -129,10 +146,14 @@ export default function Marketing() {
 
           position: fixed;
           inset: 0;
+          width: 100vw;
+          max-width: 100vw;
           background-color: var(--mkt-bg);
           color: var(--mkt-fg);
           font-family: var(--mkt-font);
           overflow: hidden;
+          overflow-x: hidden;
+          touch-action: pan-y;
           z-index: 9999;
           -webkit-font-smoothing: antialiased;
           -moz-osx-font-smoothing: grayscale;
@@ -205,14 +226,37 @@ export default function Marketing() {
           transform: scale(1.05);
         }
 
+        /* Completely hide scrollbars across all browsers */
+        .marketing-page-root,
+        .mkt-scroll-container,
+        .mkt-snap-section,
+        .mkt-content-wrap,
+        .mkt-exemples-grid {
+          scrollbar-width: none !important;
+          -ms-overflow-style: none !important;
+        }
+        .marketing-page-root::-webkit-scrollbar,
+        .mkt-scroll-container::-webkit-scrollbar,
+        .mkt-snap-section::-webkit-scrollbar,
+        .mkt-content-wrap::-webkit-scrollbar,
+        .mkt-exemples-grid::-webkit-scrollbar {
+          display: none !important;
+          width: 0 !important;
+          height: 0 !important;
+        }
+
         /* Magnetic Scrolling Container */
         .mkt-scroll-container {
           width: 100%;
+          max-width: 100vw;
           height: 100%;
           overflow-y: scroll;
+          overflow-x: hidden;
           scroll-snap-type: y mandatory;
           scroll-behavior: smooth;
           overscroll-behavior-y: contain;
+          overscroll-behavior-x: none;
+          touch-action: pan-y;
           -webkit-overflow-scrolling: touch;
         }
 
@@ -222,14 +266,17 @@ export default function Marketing() {
           scroll-snap-stop: always;
           height: 100vh;
           min-height: 100vh;
+          width: 100%;
+          max-width: 100vw;
           display: flex;
           flex-direction: column;
           justify-content: center;
           align-items: center;
           position: relative;
-          padding: 4rem 3rem;
+          padding: clamp(1.8rem, 4vh, 3.2rem) clamp(1rem, 2.5vw, 2.5rem);
           box-sizing: border-box;
           user-select: none;
+          overflow: visible;
         }
 
         /* Generous Content Container */
@@ -242,6 +289,7 @@ export default function Marketing() {
           flex-direction: column;
           align-items: center;
           text-align: center;
+          overflow: visible;
         }
 
         /* Section Headings with Slow Mathematical Deceleration */
@@ -718,23 +766,36 @@ export default function Marketing() {
           .mkt-exemples-grid {
             grid-template-columns: 1fr;
             gap: 2.5rem;
-            max-height: 60vh;
-            overflow-y: auto;
+            max-height: none;
+            overflow: visible;
           }
           .mkt-hero-fan-container {
-            max-width: 320px;
+            max-width: 280px;
+            width: 100%;
           }
           .mkt-hero-fan-container.dispersed .mkt-fan-reel.mkt-slot-0 {
-            transform: translate(-75px, 15px) rotate(-8deg) scale(0.9);
+            transform: translate(-48px, 12px) rotate(-6.5deg) scale(0.85);
           }
           .mkt-hero-fan-container.dispersed .mkt-fan-reel.mkt-slot-1 {
-            transform: translate(0, -4px) rotate(0deg) scale(1.02);
+            transform: translate(0, -4px) rotate(0deg) scale(0.96);
           }
           .mkt-hero-fan-container.dispersed .mkt-fan-reel.mkt-slot-2 {
-            transform: translate(75px, 15px) rotate(8deg) scale(0.9);
+            transform: translate(48px, 12px) rotate(6.5deg) scale(0.85);
           }
           .mkt-snap-section {
-            padding: 3rem 1.5rem;
+            min-height: 100vh;
+            height: auto;
+            padding: 4rem 1.25rem 3.5rem;
+            width: 100%;
+            max-width: 100vw;
+            box-sizing: border-box;
+            overflow: visible;
+          }
+          .mkt-content-wrap {
+            width: 100%;
+            max-width: 100%;
+            box-sizing: border-box;
+            overflow: visible;
           }
         }
       `}</style>
@@ -991,7 +1052,7 @@ export default function Marketing() {
         {/* ================= SECTION 5: QU'EST CE QUE VOUS FAITE MAUVAIS ================= */}
         <section className="mkt-snap-section" data-index="4" id="mauvais">
           <div className="mkt-content-wrap">
-            <h2 className="mkt-title mkt-mauvais-title">Qu’est ce que vous faite mauvais</h2>
+            <h2 className="mkt-title mkt-mauvais-title">Qu’est ce que vous faite de mauvais</h2>
 
             <div className="mkt-mauvais-layout">
               {/* Left Reel Card (Kababgy) */}
